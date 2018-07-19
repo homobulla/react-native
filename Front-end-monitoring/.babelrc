@@ -1,0 +1,8 @@
+{
+    "presets": ["env", "stage-0"],
+    "plugins": [
+        "transform-react-jsx",
+        ["transform-runtime"],
+        ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
+    ]
+}
