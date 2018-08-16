@@ -1,0 +1,3 @@
+rootProject.name = 'yncredit_app'
+
+include ':app'
