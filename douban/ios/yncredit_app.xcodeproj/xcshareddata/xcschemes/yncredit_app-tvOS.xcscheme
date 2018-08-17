@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "yncredit_app-tvOS.app"
-               BlueprintName = "yncredit_app-tvOS"
-               ReferencedContainer = "container:yncredit_app.xcodeproj">
+               BuildableName = "douban-tvOS.app"
+               BlueprintName = "douban-tvOS"
+               ReferencedContainer = "container:douban.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "yncredit_app-tvOSTests.xctest"
-               BlueprintName = "yncredit_app-tvOSTests"
-               ReferencedContainer = "container:yncredit_app.xcodeproj">
+               BuildableName = "douban-tvOSTests.xctest"
+               BlueprintName = "douban-tvOSTests"
+               ReferencedContainer = "container:douban.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "yncredit_app-tvOSTests.xctest"
-               BlueprintName = "yncredit_app-tvOSTests"
-               ReferencedContainer = "container:yncredit_app.xcodeproj">
+               BuildableName = "douban-tvOSTests.xctest"
+               BlueprintName = "douban-tvOSTests"
+               ReferencedContainer = "container:douban.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "yncredit_app-tvOS.app"
-            BlueprintName = "yncredit_app-tvOS"
-            ReferencedContainer = "container:yncredit_app.xcodeproj">
+            BuildableName = "douban-tvOS.app"
+            BlueprintName = "douban-tvOS"
+            ReferencedContainer = "container:douban.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "yncredit_app-tvOS.app"
-            BlueprintName = "yncredit_app-tvOS"
-            ReferencedContainer = "container:yncredit_app.xcodeproj">
+            BuildableName = "douban-tvOS.app"
+            BlueprintName = "douban-tvOS"
+            ReferencedContainer = "container:douban.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "yncredit_app-tvOS.app"
-            BlueprintName = "yncredit_app-tvOS"
-            ReferencedContainer = "container:yncredit_app.xcodeproj">
+            BuildableName = "douban-tvOS.app"
+            BlueprintName = "douban-tvOS"
+            ReferencedContainer = "container:douban.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

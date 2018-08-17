@@ -1,4 +1,4 @@
-package com.yncredit_app;
+package com.douban;
 
 import android.app.Application;
 

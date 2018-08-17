@@ -14,10 +14,10 @@ export default class Foot extends PureComponent {
 		super(props)
 	}
 	componentDidMount() {
-		window.addEventListener('resize', this.resize)
+		// window.addEventListener('resize', this.resize)
 	}
 	componentWillMount() {
-		window.removeEventListener('resize', this.resize)
+		// window.removeEventListener('resize', this.resize)
 	}
 	resize() {
 		ToastAndroid.show('aaa', 2000)

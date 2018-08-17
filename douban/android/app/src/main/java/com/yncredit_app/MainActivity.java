@@ -1,4 +1,4 @@
-package com.yncredit_app;
+package com.douban;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "yncredit_app";
+        return "douban";
     }
 }
