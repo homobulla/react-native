@@ -14,6 +14,7 @@ export default class Foot extends PureComponent {
         super(props)
     }
     componentDidMount() {
+        console.warn(window)
         // window.addEventListener('resize', this.resize)
     }
     componentWillMount() {

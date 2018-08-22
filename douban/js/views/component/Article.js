@@ -1,24 +1,52 @@
 import React from 'react'
-import { View, FlatList, Text, Image } from 'react-native'
+import {
+    View,
+    FlatList,
+    Text,
+    Image,
+    StyleSheet,
+    Dimensions
+} from 'react-native'
 import { Link } from 'react-router-native'
-
+let { height, width } = Dimensions.get('window')
 const ListItem = ({ item }) => (
-    <View key={item.id}>
-        <Text>{item.title}</Text>
-        <Link to={`/book/${item.id}`}>
-            <Image
-                style={{ width: 166, height: 158 }}
-                source={{
-                    uri: item.image
-                }}
-            />
-        </Link>
+    <View style={styles.list}>
+        <View key={item.id}>
+            <Link to={`/book/${item.id}`}>
+                <Image
+                    style={{ width: width * 0.45, height: 158 }}
+                    source={{
+                        uri: item.image
+                    }}
+                />
+            </Link>
+            <Text style={styles.text}>{item.title}</Text>
+        </View>
     </View>
 )
 const Article = props => (
     <View>
-        <FlatList data={props.data} renderItem={ListItem} />
+        <FlatList
+            data={props.data}
+            renderItem={ListItem}
+            horizontal={false}
+            numColumns={2}
+        />
     </View>
 )
 
+const styles = StyleSheet.create({
+    list: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    text: {
+        fontSize: 14,
+        paddingTop: 10,
+        paddingBottom: 10
+        // alignItems: 'center',
+        // justifyContent: 'center'
+    }
+})
 export default Article

@@ -1,12 +1,5 @@
 import React, { Component, PureComponent } from 'react'
-import {
-    FlatList,
-    Text,
-    TextInput,
-    View,
-    ToastAndroid,
-    Image
-} from 'react-native'
+import { FlatList, Text, TextInput, View, Image } from 'react-native'
 import $ from '../../service/axios'
 
 export default class Search extends PureComponent {

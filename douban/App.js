@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text } from 'react-native'
-import Index from './js/views/view/Index'
+import { StyleSheet, View, Text, Image } from 'react-native'
 import { EventProvider } from './js/utils'
 import { NativeRouter } from 'react-router-native'
-import Routes from './js/routes'
+import Root from './js/routes'
 export default class App extends Component {
     render() {
         return (
             <NativeRouter>
                 <EventProvider>
                     <View style={styles.container}>
-                        <Routes />
+                        <Root />
                     </View>
                 </EventProvider>
             </NativeRouter>
@@ -22,7 +21,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'powderblue',
-        paddingTop: 30,
         flexDirection: 'column'
     }
 })

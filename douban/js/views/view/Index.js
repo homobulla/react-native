@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { View, Image } from 'react-native'
+import { View } from 'react-native'
 import Foot from '../component/Footer'
 import Search from '../component/Search'
 import Article from '../component/Article'
@@ -17,7 +17,6 @@ export default class Index extends PureComponent {
                         </View>
                     )}
                 </EventConsumer>
-                <Foot />
             </View>
         )
     }
