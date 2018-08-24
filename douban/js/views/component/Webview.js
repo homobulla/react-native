@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { WebView } from 'react-native'
-
-const BookWebView = ({ uri }) => (
-    <WebView source={{ uri }} style={{ marginTop: 20 }} />
-)
-
+import { WebView, Text } from 'react-native'
+class BookWebView extends Component {
+    render() {
+        const { navigation } = this.props
+        const uri = navigation.getParam('alt', 'NO-ID')
+        return <WebView source={{ uri }} style={{ marginTop: 0 }} />
+    }
+}
 export default BookWebView

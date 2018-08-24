@@ -1,15 +1,19 @@
 import React from 'react'
+import { View } from 'react-native'
 import {
     createStackNavigator,
     createBottomTabNavigator,
-    createSwitchNavigator
+    createSwitchNavigator,
+    TabNavigator
 } from 'react-navigation'
 import TabBarItem from '../views/component/TabBarItem.js'
 import Home from '../views/view/Index'
 import Love from '../views/view/Love'
 import My from '../views/view/My'
+import BookWebView from '../views/component/Webview'
+import Search from '../views/view/Search'
 
-const TabStack = createBottomTabNavigator(
+const TabStack = TabNavigator(
     {
         Home: {
             screen: Home,
@@ -19,8 +23,8 @@ const TabStack = createBottomTabNavigator(
                     <TabBarItem
                         focused={focused}
                         tintColor={tintColor}
-                        icon={require('../asset/img/index_blue.png')}
-                        selectedIcon={require('../asset/img/index_gray.png')}
+                        icon={require('../asset/img/left.png')}
+                        selectedIcon={require('../asset/img/left.png')}
                     />
                 )
             }
@@ -33,8 +37,8 @@ const TabStack = createBottomTabNavigator(
                     <TabBarItem
                         focused={focused}
                         tintColor={tintColor}
-                        icon={require('../asset/img/love_blue.png')}
-                        selectedIcon={require('../asset/img/love_blue.png')}
+                        icon={require('../asset/img/middle.png')}
+                        selectedIcon={require('../asset/img/middle.png')}
                     />
                 )
             }
@@ -47,8 +51,8 @@ const TabStack = createBottomTabNavigator(
                     <TabBarItem
                         focused={focused}
                         tintColor={tintColor}
-                        icon={require('../asset/img/my_blue.png')}
-                        selectedIcon={require('../asset/img/my_blue.png')}
+                        icon={require('../asset/img/right.png')}
+                        selectedIcon={require('../asset/img/right.png')}
                     />
                 )
             }
@@ -57,7 +61,7 @@ const TabStack = createBottomTabNavigator(
     {
         tabBarOptions: {
             //当前选中的tab bar的文本颜色和图标颜色
-            activeTintColor: '#353535',
+            activeTintColor: '#4758B8',
             //当前未选中的tab bar的文本颜色和图标颜色
             inactiveTintColor: '#353535',
             //是否显示tab bar的图标，默认是false
@@ -72,16 +76,16 @@ const TabStack = createBottomTabNavigator(
             pressOpacity: 0.8,
             //tab bar的样式
             style: {
-                backgroundColor: '#fff',
-                paddingBottom: 1,
+                backgroundColor: 'powderblue',
+                paddingBottom: 2,
                 borderTopWidth: 0.2,
-                paddingTop: 1,
+                paddingTop: 2,
                 borderTopColor: '#ccc'
             },
             //tab bar的文本样式
             labelStyle: {
                 fontSize: 14,
-                margin: 1
+                margin: 2
             },
             tabStyle: {
                 height: 45
@@ -91,6 +95,7 @@ const TabStack = createBottomTabNavigator(
         },
         //tab bar的位置, 可选值： 'top' or 'bottom'
         tabBarPosition: 'bottom',
+        tabBarVisible: true,
         //是否允许滑动切换tab页
         swipeEnabled: true,
         //是否在切换tab页时使用动画
@@ -103,17 +108,46 @@ const TabStack = createBottomTabNavigator(
     }
 )
 
-const AppStack = createStackNavigator({
-    Tab: {
-        screen: TabStack,
-        navigationOptions: {
-            header: null
+// 路由部分
+
+const AppStack = createStackNavigator(
+    {
+        Tab: {
+            screen: TabStack,
+            navigationOptions: {
+                header: null
+            }
+        },
+
+        Search: {
+            screen: Search,
+            navigationOptions: ({ navigation }) => ({
+                title: 'Search'
+            })
+        },
+        BookWebView: {
+            screen: BookWebView,
+            navigationOptions: ({ navigation }) => ({
+                title: '详情页'
+            })
         }
+        // Love: { screen: Love },
+        // My: { screen: My }
     },
-    Home: { screen: Home },
-    Love: { screen: Love },
-    My: { screen: My }
-})
+    {
+        // 跨页面共享通用的navigationOptions 头部统一样式
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: 'powderblue'
+                // borderBottomWidth: 0,
+                // elevation: 0,
+                // alignSelf: 'center'
+            },
+            // headerRight: <View />,
+            headerTintColor: '#fff'
+        }
+    }
+)
 
 const Root = createSwitchNavigator({
     App: AppStack

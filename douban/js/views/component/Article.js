@@ -5,30 +5,36 @@ import {
     Text,
     Image,
     StyleSheet,
-    Dimensions
+    Dimensions,
+    TouchableOpacity
 } from 'react-native'
-import { Link } from 'react-router-native'
+import Webview from './Webview'
 let { height, width } = Dimensions.get('window')
-const ListItem = ({ item }) => (
-    <View style={styles.list}>
-        <View key={item.id}>
-            <Link to={`/book/${item.id}`}>
-                <Image
-                    style={{ width: width * 0.45, height: 158 }}
-                    source={{
-                        uri: item.image
-                    }}
-                />
-            </Link>
-            <Text style={styles.text}>{item.title}</Text>
-        </View>
+
+const ListItem = (item, navigation) => (
+    <View style={styles.list} key={item.id}>
+        <TouchableOpacity
+            onPress={() =>
+                navigation.navigate('BookWebView', {
+                    alt: item.alt
+                })
+            }
+        >
+            <Image
+                style={{ width: width * 0.45, height: 208 }}
+                source={{
+                    uri: item.image
+                }}
+            />
+        </TouchableOpacity>
+        <Text style={styles.text}>{item.title}</Text>
     </View>
 )
 const Article = props => (
     <View>
         <FlatList
             data={props.data}
-            renderItem={ListItem}
+            renderItem={({ item }) => ListItem(item, props.navigation)}
             horizontal={false}
             numColumns={2}
         />

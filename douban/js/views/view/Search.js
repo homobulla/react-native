@@ -1,7 +1,7 @@
 import React, { PureComponent, Component } from 'react'
 import { View, Button, Text, StyleSheet } from 'react-native'
 // import Foot from '../component/Footer'
-// import Search from './Search'
+import Search from '../component/Search'
 import Article from '../component/Article'
 import { EventConsumer } from '../../utils'
 class LogoTitle extends Component {
@@ -10,23 +10,20 @@ class LogoTitle extends Component {
     render() {}
 }
 export default class Index extends PureComponent {
-    static navigationOptions = {
-        // headerTitle instead of title
-    }
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <View style={styles.view}>
-                    <Text style={styles.title} />
-
-                    <Text style={styles.title}>one is all</Text>
-                    <Text
-                        style={styles.search}
-                        onPress={() => this.props.navigation.navigate('Search')}
-                    >
-                        Search
-                    </Text>
-                </View>
+                <EventConsumer>
+                    {ctx => (
+                        <View>
+                            <Search eventBus={ctx} />
+                            <Article
+                                navigation={this.props.navigation}
+                                data={ctx.articleList}
+                            />
+                        </View>
+                    )}
+                </EventConsumer>
             </View>
         )
     }
