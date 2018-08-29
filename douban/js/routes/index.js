@@ -23,8 +23,8 @@ const TabStack = TabNavigator(
                     <TabBarItem
                         focused={focused}
                         tintColor={tintColor}
-                        icon={require('../asset/img/left.png')}
-                        selectedIcon={require('../asset/img/left.png')}
+                        icon={require('../asset/img/index.png')}
+                        selectedIcon={require('../asset/img/index_sele.png')}
                     />
                 )
             }
@@ -95,13 +95,13 @@ const TabStack = TabNavigator(
         },
         //tab bar的位置, 可选值： 'top' or 'bottom'
         tabBarPosition: 'bottom',
-        tabBarVisible: true,
+        tabBarVisible: false,
         //是否允许滑动切换tab页
-        swipeEnabled: true,
+        swipeEnabled: false,
         //是否在切换tab页时使用动画
         animationEnabled: true,
         //是否懒加载
-        lazy: true,
+        lazy: false,
         //返回按钮是否会导致tab切换到初始tab页？ 如果是，则设置为initialRoute，否则为none。 缺省为initialRoute。
         backBehavior: 'none',
         initialRouteName: 'Home'

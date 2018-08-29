@@ -8,7 +8,6 @@ import {
     Dimensions,
     TouchableOpacity
 } from 'react-native'
-import Webview from './Webview'
 let { height, width } = Dimensions.get('window')
 
 const ListItem = (item, navigation) => (

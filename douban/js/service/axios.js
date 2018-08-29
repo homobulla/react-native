@@ -17,6 +17,20 @@ const search = async param => {
     return responseJson
 }
 
+const theaters = async _ => {
+    let response = await axios
+        .get(API.MOVIE_ING)
+        .then(ret => {
+            return ret.data
+        })
+        .catch(error => {
+            console.error(error)
+        })
+    let responseJson = await response
+
+    return responseJson
+}
 export default {
-    search
+    search,
+    theaters
 }

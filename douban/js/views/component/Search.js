@@ -22,18 +22,10 @@ export default class Search extends PureComponent {
                     placeholder="请输入关键字来检索"
                     onChangeText={text => this.setState({ text })}
                     value={this.state.text}
-                />
-                <Text
-                    style={{ padding: 10, fontSize: 42 }}
-                    onPress={_ => {
+                    onSubmitEditing={_ => {
                         this.renderDate()
                     }}
-                >
-                    {this.state.text
-                        .split(' ')
-                        .map(word => word && '🍕')
-                        .join(' ')}
-                </Text>
+                />
             </View>
         )
     }
