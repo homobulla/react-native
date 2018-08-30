@@ -6,63 +6,14 @@ import {
     Dimensions,
     Image,
     TouchableOpacity,
-    ActivityIndicator
+    ActivityIndicator,
+    ScrollView
 } from 'react-native'
 
 import $ from '../../service/axios'
 const { width } = Dimensions.get('window')
 import Swiper from 'react-native-swiper'
-// class MusicList extends PureComponent {
-//     state = {
-//         ret: []
-//     }
-//     constructor(props) {
-//         super(props)
-//         $.theaters().then(data => {
-//             this.setState({ ret: data.subjects })
-//         })
-//     }
 
-//     _renderCarouselItem() {
-//         const banner = this.state.ret
-//         const navigation = this.props.navigation
-//         console.warn(navigation)
-//         return banner.map((item, index) => {
-//             return (
-//                 <TouchableOpacity
-//                 // onPress={() =>
-//                 //     navigation.navigate('BookWebView', {
-//                 //         alt: item.alt
-//                 //     })
-//                 // }
-//                 >
-//                     <Image
-//                         style={styles.bannerImage}
-//                         resizeMode="stretch"
-//                         resizeMethod="resize"
-//                         key={index}
-//                         source={{ uri: item.images.large }}
-//                     />
-//                 </TouchableOpacity>
-//             )
-//         })
-//     }
-//     render() {
-//         return (
-//             <View style={styles.banner}>
-//                 <Swiper
-//                     removeClippedSubviews={false}
-//                     autoplay={true}
-//                     loop
-//                     horizontal={true}
-//                     showsPagination={false}
-//                 >
-//                     {this._renderCarouselItem()}
-//                 </Swiper>
-//             </View>
-//         )
-//     }
-// }
 export default class Index extends PureComponent {
     state = {
         ret: []
@@ -79,6 +30,7 @@ export default class Index extends PureComponent {
         return banner.map((item, index) => {
             return (
                 <TouchableOpacity
+                    key={index}
                     onPress={() =>
                         this.props.navigation.navigate('BookWebView', {
                             alt: item.alt
@@ -88,8 +40,6 @@ export default class Index extends PureComponent {
                     <Image
                         style={styles.bannerImage}
                         resizeMode="stretch"
-                        resizeMethod="resize"
-                        key={index}
                         source={{ uri: item.images.large }}
                     />
                 </TouchableOpacity>
@@ -108,28 +58,95 @@ export default class Index extends PureComponent {
                         Search
                     </Text>
                 </View>
-                <View>
-                    {/* <MusicList /> */}
-
-                    <View style={styles.banner}>
-                        <Swiper
-                            key={this.state.ret.length}
-                            removeClippedSubviews={false}
-                            autoplay={true}
-                            loop
-                            horizontal={true}
-                            showsPagination={false}
+                <ScrollView style={{ flex: 1 }}>
+                    <View>
+                        <View style={styles.banner}>
+                            {this.state.ret.length == 0 ? (
+                                <ActivityIndicator
+                                    size="large"
+                                    color="powderblue"
+                                />
+                            ) : (
+                                <Swiper
+                                    key={this.state.ret.length}
+                                    removeClippedSubviews={false}
+                                    autoplay={true}
+                                    loop
+                                    horizontal={true}
+                                    showsPagination={false}
+                                >
+                                    {this._renderCarouselItem()}
+                                </Swiper>
+                            )}
+                        </View>
+                        <Text
+                            style={{
+                                fontSize: 14,
+                                fontWeight: '500',
+                                margin: 15
+                            }}
                         >
-                            {this._renderCarouselItem()}
-                        </Swiper>
+                            长安城里的一切已经结束。一切都在无可挽回地走向庸俗。
+                        </Text>
+                        <Toshow />
                     </View>
-                    <ActivityIndicator size="large" color="#0000ff" />
-                </View>
+                </ScrollView>
             </View>
         )
     }
 }
 
+class Toshow extends Component {
+    state = {
+        data: []
+    }
+    constructor(props) {
+        super(props)
+        $.search('王小波').then(data => {
+            this.setState({ data: data.books })
+        })
+    }
+    _goDetails() {
+        console.warn(1111)
+        this.props.navigation.navigate('BookWebView', {
+            alt: item.alt
+        })
+    }
+    render() {
+        const { data } = this.state
+        return data.map((item, index) => {
+            return (
+                <View style={toshow.view} key={index}>
+                    <View style={toshow.cover}>
+                        <Image
+                            style={{ width: 70, height: 100 }}
+                            source={{
+                                uri: item.image
+                            }}
+                        />
+                    </View>
+                    <View style={{ flex: 4 }}>
+                        <Text style={{ fontSize: 16, fontWeight: '500' }}>
+                            {item.title}
+                        </Text>
+                        <Text style={toshow.Introduction}>
+                            {'简介：' + item.summary.slice(0, 35) + '...'}
+                        </Text>
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                                justifyContent: 'flex-start'
+                            }}
+                        >
+                            <Text style={toshow.author}>{item.author}</Text>
+                            {/* <Text style={toshow.type}>分类</Text> */}
+                        </View>
+                    </View>
+                </View>
+            )
+        })
+    }
+}
 const styles = StyleSheet.create({
     view: {
         height: 50,
@@ -156,6 +173,30 @@ const styles = StyleSheet.create({
     },
     bannerImage: {
         width: width,
-        height: 220
+        height: 250
+    }
+})
+
+const toshow = StyleSheet.create({
+    view: {
+        flex: 1,
+        flexDirection: 'row',
+        margin: 5
+    },
+    cover: {
+        flex: 1,
+        paddingLeft: 10,
+        paddingRight: 10
+    },
+    author: {
+        color: '#999',
+        marginTop: 10
+    },
+    Introduction: {
+        marginTop: 10
+    },
+    type: {
+        position: 'absolute',
+        right: 50
     }
 })
