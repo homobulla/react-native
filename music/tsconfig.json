@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "allowJs": true,
+        "jsx": "react",
+        "sourceMap": false,
+        "noImplicitAny": false
+    },
+    "exclude": ["node_modules"]
+}

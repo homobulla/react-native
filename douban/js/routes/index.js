@@ -7,11 +7,8 @@ import {
     TabNavigator
 } from 'react-navigation'
 import TabBarItem from '../views/component/TabBarItem.js'
-import Home from '../views/view/Index'
-import Love from '../views/view/Love'
-import My from '../views/view/My'
-import BookWebView from '../views/component/Webview'
-import Search from '../views/view/Search'
+import { Home, Love, My, Search } from '../views/view/export'
+import { BookWebView } from '../views/component/index'
 
 const TabStack = TabNavigator(
     {
@@ -19,12 +16,12 @@ const TabStack = TabNavigator(
             screen: Home,
             navigationOptions: {
                 tabBarLabel: '首页',
-                tabBarIcon: ({ focused, tintColor }) => (
+                tabBarIcon: ({ focused, tintColor }) => (  
                     <TabBarItem
                         focused={focused}
                         tintColor={tintColor}
-                        icon={require('../asset/img/index.png')}
-                        selectedIcon={require('../asset/img/index_sele.png')}
+                        icon={require('../asset/img/left.png')}
+                        selectedIcon={require('../asset/img/left.png')}
                     />
                 )
             }
@@ -32,7 +29,7 @@ const TabStack = TabNavigator(
         Love: {
             screen: Love,
             navigationOptions: {
-                tabBarLabel: '喜爱',
+                tabBarLabel: '一个',
                 tabBarIcon: ({ focused, tintColor }) => (
                     <TabBarItem
                         focused={focused}
@@ -76,7 +73,7 @@ const TabStack = TabNavigator(
             pressOpacity: 0.8,
             //tab bar的样式
             style: {
-                backgroundColor: 'powderblue',
+                backgroundColor: '#EFF3F5',
                 paddingBottom: 2,
                 borderTopWidth: 0.2,
                 paddingTop: 2,
@@ -128,7 +125,7 @@ const AppStack = createStackNavigator(
         BookWebView: {
             screen: BookWebView,
             navigationOptions: ({ navigation }) => ({
-                title: '详情页'
+                title: navigation.state.params.name
             })
         }
         // Love: { screen: Love },
@@ -138,13 +135,13 @@ const AppStack = createStackNavigator(
         // 跨页面共享通用的navigationOptions 头部统一样式
         navigationOptions: {
             headerStyle: {
-                backgroundColor: 'powderblue'
+                backgroundColor: '#EFF3F5'
                 // borderBottomWidth: 0,
                 // elevation: 0,
                 // alignSelf: 'center'
             },
             // headerRight: <View />,
-            headerTintColor: '#fff'
+            headerTintColor: 'black'
         }
     }
 )

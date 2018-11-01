@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, WebView } from 'react-native'
 
 export default class Love extends Component {
     constructor(props) {
@@ -8,22 +8,13 @@ export default class Love extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text
-                    style={{
-                        backgroundColor: 'red'
-                    }}
-                >
-                    this is love page
-                </Text>
-                <Text
-                    style={{
-                        backgroundColor: 'red'
-                    }}
-                >
-                    this is love page
-                </Text>
-            </View>
+            <WebView
+                source={{
+                    uri: 'http://m.wufazhuce.com/#&ui-state=dialog'
+                }}
+                style={{ marginTop: 0 }}
+                startInLoadingState={true}
+            />
         )
     }
 }
@@ -34,6 +25,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'powderblue'
+        backgroundColor: '#EFF3F5'
     }
 })

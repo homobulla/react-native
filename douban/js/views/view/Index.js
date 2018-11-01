@@ -7,7 +7,8 @@ import {
     Image,
     TouchableOpacity,
     ActivityIndicator,
-    ScrollView
+    ScrollView,
+    ToastAndroid
 } from 'react-native'
 
 import $ from '../../service/axios'
@@ -64,7 +65,7 @@ export default class Index extends PureComponent {
                             {this.state.ret.length == 0 ? (
                                 <ActivityIndicator
                                     size="large"
-                                    color="powderblue"
+                                    color="#EFF3F5"
                                 />
                             ) : (
                                 <Swiper
@@ -85,10 +86,16 @@ export default class Index extends PureComponent {
                                 fontWeight: '500',
                                 margin: 15
                             }}
+                            onPress={() => {
+                                ToastAndroid.show(
+                                    ' 那一年我21岁,在我一生的黄金年代,我有好多奢望,我想吃,想爱,还想在这一瞬间变成天上半明半暗的云。',
+                                    ToastAndroid.LONG
+                                )
+                            }}
                         >
                             长安城里的一切已经结束。一切都在无可挽回地走向庸俗。
                         </Text>
-                        <Toshow />
+                        <Toshow navigate={this.props.navigation.navigate} />
                     </View>
                 </ScrollView>
             </View>
@@ -107,13 +114,13 @@ class Toshow extends Component {
         })
     }
     _goDetails() {
-        console.warn(1111)
         this.props.navigation.navigate('BookWebView', {
             alt: item.alt
         })
     }
     render() {
         const { data } = this.state
+        const { navigate } = this.props
         return data.map((item, index) => {
             return (
                 <View style={toshow.view} key={index}>
@@ -129,7 +136,15 @@ class Toshow extends Component {
                         <Text style={{ fontSize: 16, fontWeight: '500' }}>
                             {item.title}
                         </Text>
-                        <Text style={toshow.Introduction}>
+                        <Text
+                            style={toshow.Introduction}
+                            onPress={() =>
+                                navigate('BookWebView', {
+                                    alt: item.alt,
+                                    name: item.title
+                                })
+                            }
+                        >
                             {'简介：' + item.summary.slice(0, 35) + '...'}
                         </Text>
                         <View
@@ -150,7 +165,7 @@ class Toshow extends Component {
 const styles = StyleSheet.create({
     view: {
         height: 50,
-        backgroundColor: 'powderblue',
+        backgroundColor: '#EFF3F5',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center'
@@ -169,7 +184,7 @@ const styles = StyleSheet.create({
     },
     banner: {
         width: width,
-        height: 220
+        height: 250
     },
     bannerImage: {
         width: width,

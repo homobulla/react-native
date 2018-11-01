@@ -1,8 +1,6 @@
 import React, { PureComponent, Component } from 'react'
 import { View, Button, Text, StyleSheet } from 'react-native'
-// import Foot from '../component/Footer'
-import Search from '../component/Search'
-import Article from '../component/Article'
+import { Search, Article } from '../component/index'
 import { EventConsumer } from '../../utils'
 class LogoTitle extends Component {
     static navigationOptions = {}
@@ -32,7 +30,7 @@ export default class Index extends PureComponent {
 const styles = StyleSheet.create({
     view: {
         height: 50,
-        backgroundColor: 'powderblue',
+        backgroundColor: '#EFF3F5',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'

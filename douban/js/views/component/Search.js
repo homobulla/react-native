@@ -22,6 +22,7 @@ export default class Search extends PureComponent {
                     placeholder="请输入关键字来检索"
                     onChangeText={text => this.setState({ text })}
                     value={this.state.text}
+                    returnKeyType="search"
                     onSubmitEditing={_ => {
                         this.renderDate()
                     }}

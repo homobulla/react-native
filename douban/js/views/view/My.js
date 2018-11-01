@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, WebView } from 'react-native'
 
-export default class My extends Component {
+export default class Love extends Component {
     constructor(props) {
         super(props)
     }
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text>this is my page</Text>
-            </View>
+            <WebView
+                source={{
+                    uri: 'https://homobulla.site'
+                }}
+                style={{ marginTop: 0 }}
+                startInLoadingState={true}
+            />
         )
     }
 }
@@ -18,8 +22,9 @@ export default class My extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection: 'row',
         justifyContent: 'center',
-        alignContent: 'center',
-        backgroundColor: '#f5f5f5'
+        alignItems: 'center',
+        backgroundColor: '#EFF3F5'
     }
 })
