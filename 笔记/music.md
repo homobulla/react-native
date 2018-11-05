@@ -7,4 +7,7 @@
   - redux
   - utils
 
-[引入ts](https://www.jianshu.com/p/7ca5075a4dde),
+首先需要[引入ts](https://www.jianshu.com/p/7ca5075a4dde).
+
+
+

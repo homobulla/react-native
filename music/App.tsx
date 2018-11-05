@@ -8,35 +8,93 @@
 
 import * as React from 'react'
 import { Platform, StyleSheet, Text, View } from 'react-native'
-import { Demo } from './src/recommend/index'
+import Icon from 'react-native-vector-icons/Ionicons'
+import Recommend from './src/recommend/index'
+import { Account } from './src/account/index'
+import { Friend } from './src/friend/index'
+import { MyMusic } from './src/myMusic/index'
+import {
+    createStackNavigator,
+    createSwitchNavigator,
+    createBottomTabNavigator,
+    createTabNavigator,
+    createMaterialTopTabNavigator
+    // createMaterialBottomTabNavigator
+} from 'react-navigation'
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
 
-type Props = {}
-export default class App extends React.Component<Props> {
-    render() {
-        return (
-            <View style={styles.container}>
-                <Demo word="hello" />
-                <Text style={styles.instructions}>恭喜ts引入成功！</Text>
-            </View>
-        )
+const RouterBo = createMaterialBottomTabNavigator(
+    {
+        Recommend: {
+            screen: Recommend,
+            navigationOptions: ({ navigation }) => ({
+                tabBarLabel: '发现音乐',
+                tabBarIcon: ({ focused, tintColor }) => (
+                    <Icon
+                        focused={focused}
+                        tintColor={tintColor}
+                        name="ios-disc-outline"
+                        size={30}
+                        color={tintColor}
+                    />
+                )
+            })
+        },
+        MyMusic: {
+            screen: MyMusic,
+            navigationOptions: ({ navigation }) => ({
+                tabBarLabel: '我的音乐',
+                tabBarIcon: ({ focused, tintColor }) => (
+                    <Icon
+                        focused={focused}
+                        tintColor={tintColor}
+                        name="ios-musical-notes-outline"
+                        size={30}
+                        color={tintColor}
+                    />
+                )
+            })
+        },
+        Friend: {
+            screen: Friend,
+            navigationOptions: ({ navigation }) => ({
+                tabBarLabel: '朋友',
+                tabBarIcon: ({ focused, tintColor }) => (
+                    <Icon
+                        focused={focused}
+                        tintColor={tintColor}
+                        name="ios-contacts-outline"
+                        size={30}
+                        color={tintColor}
+                    />
+                )
+            })
+        },
+        Account: {
+            screen: Account,
+            navigationOptions: ({ navigation }) => ({
+                tabBarLabel: '账户',
+                tabBarIcon: ({ focused, tintColor }) => (
+                    <Icon
+                        focused={focused}
+                        tintColor={tintColor}
+                        name="ios-person-outline"
+                        size={30}
+                        color={tintColor}
+                    />
+                )
+            })
+        }
+    },
+    {
+        initialRouteName: 'Recommend',
+        navigationOptions: {
+            tabBarColor: 'black'
+        }
     }
-}
+)
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF'
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5
-    }
-})
+// const Root = createMaterialTopTabNavigator({
+//     App: RouterBo
+// })
+export default RouterBo
