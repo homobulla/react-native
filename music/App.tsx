@@ -82,7 +82,7 @@ const RouterBo = createMaterialBottomTabNavigator(
         }
     },
     {
-        initialRouteName: 'Recommend',
+        initialRouteName: 'MyMusic',
         barStyle: { backgroundColor: color.backgroundColor }
     }
 )

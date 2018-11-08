@@ -28,3 +28,11 @@ Text居中：
  textAlign: 'center'
 ```
 
+一个绝对定位的元素居中：
+
+```css
+  position: 'absolute',bottom: 100,justifyContent: 'center',
+                        right: 0,
+                        left: 0
+```
+
