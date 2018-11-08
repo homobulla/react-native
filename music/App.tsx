@@ -13,14 +13,9 @@ import Recommend from './src/recommend/index'
 import { Account } from './src/account/index'
 import { Friend } from './src/friend/index'
 import { MyMusic } from './src/myMusic/index'
-import {
-    createStackNavigator,
-    createSwitchNavigator,
-    createBottomTabNavigator,
-    createTabNavigator,
-    createMaterialTopTabNavigator
-    // createMaterialBottomTabNavigator
-} from 'react-navigation'
+import color from './src/utils/color'
+
+import { createStackNavigator } from 'react-navigation'
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
 
 const RouterBo = createMaterialBottomTabNavigator(
@@ -88,13 +83,22 @@ const RouterBo = createMaterialBottomTabNavigator(
     },
     {
         initialRouteName: 'Recommend',
-        navigationOptions: {
-            tabBarColor: 'black'
-        }
+        barStyle: { backgroundColor: color.backgroundColor }
     }
 )
 
-// const Root = createMaterialTopTabNavigator({
-//     App: RouterBo
-// })
-export default RouterBo
+const Root = createStackNavigator(
+    {
+        App: { screen: RouterBo }
+    },
+    {
+        navigationOptions: {
+            title: 'Netease cloud music',
+            headerStyle: {
+                backgroundColor: color.backgroundColor
+            },
+            headerTintColor: '#fff'
+        }
+    }
+)
+export default Root

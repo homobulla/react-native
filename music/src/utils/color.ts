@@ -1,6 +1,6 @@
 export default {
-    theme: '#D43C33',
-    backgroundColor: '#FBFCFE',
+    theme: '#6B52AE',
+    backgroundColor: '#6B52AE',
     white: '#ffffff',
     black: '#000000',
     border: '#e0e0e0',

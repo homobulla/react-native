@@ -19,4 +19,12 @@ $ react-native run-android
 
 ### 路由组件嵌套问题
 
-`react-navigation`的多个组件需要嵌套使用，比如`createMaterialBottomTabNavigator`一旦使用作为底部导航栏，则
+`react-navigation`的多个组件需要嵌套使用，比如`createMaterialBottomTabNavigator`一旦使用作为底部导航栏，则自定义头部无法显示（date:2018/11/06)
+
+Text居中：
+
+```css
+ textAlignVertical: 'center',
+ textAlign: 'center'
+```
+
