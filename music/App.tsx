@@ -93,11 +93,9 @@ const Root = createStackNavigator(
     },
     {
         navigationOptions: {
-            title: 'Netease cloud music',
             headerStyle: {
                 backgroundColor: color.backgroundColor
-            },
-            headerTintColor: '#fff'
+            }
         }
     }
 )
