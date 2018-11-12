@@ -1,8 +1,18 @@
 import * as React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 
-export class Account extends React.PureComponent {
+export class Account extends React.PureComponent<props> {
     render() {
-        return <Text>this is account@!</Text>
+        return (
+            <ScrollView>
+                <Text
+                    onPress={_ => {
+                        this.props.navigation.navigate('SongList')
+                    }}
+                >
+                    this is account@!
+                </Text>
+            </ScrollView>
+        )
     }
 }

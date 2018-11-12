@@ -1,12 +1,19 @@
 import * as React from 'react'
-import { View, Text, StyleSheet, Image, ScrollView, Alert } from 'react-native'
+import {
+    View,
+    Text,
+    StyleSheet,
+    Image,
+    ScrollView,
+    Alert,
+    TouchableOpacity
+} from 'react-native'
 import Swiper from 'react-native-swiper'
 import screen from '../utils/screen'
 import { TJMUSIC, TJMV } from '../request/API'
 import axios from 'axios'
 import { IconMenu } from '../component/IconMenu'
 import color from '../utils/color'
-
 const MySwiper = () => (
     <View style={{ height: 140 }}>
         <Swiper autoplay={true} loop horizontal={true} height={140}>
@@ -26,9 +33,12 @@ const MySwiper = () => (
     </View>
 )
 
-class List extends React.PureComponent<props> {
+class List extends React.Component<props> {
     state = {
         result: []
+    }
+    constructor(props) {
+        super(props)
     }
     _getData(): void {
         const { props } = this
@@ -44,8 +54,10 @@ class List extends React.PureComponent<props> {
     componentDidMount() {
         this._getData()
     }
+
     render() {
-        const { state, props } = this
+        const { state, props, navigation } = this
+
         return (
             <View style={list_style.contain}>
                 <View style={list_style.title}>
@@ -61,7 +73,7 @@ class List extends React.PureComponent<props> {
                         justifyContent: 'space-between'
                     }}
                 >
-                    {state.result.map((i, v) => {
+                    {state.result.map(i => {
                         return (
                             <View
                                 style={{
@@ -69,18 +81,26 @@ class List extends React.PureComponent<props> {
                                 }}
                                 key={i.id}
                             >
-                                <Image
-                                    source={{
-                                        uri: i.picUrl
-                                            ? i.picUrl
-                                            : i.song.album.picUrl
+                                <TouchableOpacity
+                                    onPress={_ => {
+                                        this.props.navigation.navigate(
+                                            'SongList'
+                                        )
                                     }}
-                                    style={{
-                                        width: '100%',
-                                        height: 110,
-                                        borderRadius: 5
-                                    }}
-                                />
+                                >
+                                    <Image
+                                        source={{
+                                            uri: i.picUrl
+                                                ? i.picUrl
+                                                : i.song.album.picUrl
+                                        }}
+                                        style={{
+                                            width: '100%',
+                                            height: 110,
+                                            borderRadius: 5
+                                        }}
+                                    />
+                                </TouchableOpacity>
                                 <Text style={list_style.name}>{i.name}</Text>
                             </View>
                         )
@@ -114,6 +134,9 @@ const list_style = StyleSheet.create({
     }
 })
 export class Personality extends React.Component {
+    static navigationOptions = {
+        header: null
+    }
     render() {
         return (
             <ScrollView>
@@ -130,7 +153,11 @@ export class Personality extends React.Component {
                     <IconMenu icon="md-calendar" title="每日歌曲推荐" />
                     <IconMenu icon="md-stats" title="云音乐热歌榜" />
                 </View>
-                <List title="推荐音乐" apiType={TJMUSIC} />
+                <List
+                    title="推荐音乐"
+                    apiType={TJMUSIC}
+                    navigation={this.props.navigation}
+                />
                 <List title="推荐MV" apiType={TJMV} />
             </ScrollView>
         )

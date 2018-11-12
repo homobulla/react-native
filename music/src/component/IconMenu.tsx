@@ -7,14 +7,33 @@ import Icon from 'react-native-vector-icons/Ionicons'
 interface props {
     title: string
     icon: any
+    pcolor?: string
+    pbackcolor?: string
 }
 export class IconMenu extends React.PureComponent<props> {
     render() {
-        const { title, icon } = this.props
+        const {
+            title,
+            icon,
+            pcolor = '#6B52AE',
+            pbackcolor = 'white'
+        } = this.props
+
         return (
             <View style={styles.container}>
-                <View style={styles.iconContainer}>
-                    <Icon name={icon} size={25} color="#6B52AE" />
+                <View
+                    style={{
+                        height: '50%',
+                        width: '50%',
+                        borderRadius: 50,
+                        borderWidth: 2,
+                        backgroundColor: pbackcolor,
+                        borderColor: color.theme,
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}
+                >
+                    <Icon name={icon} size={25} color={pcolor} />
                 </View>
                 <Text style={styles.text}>{title}</Text>
             </View>
@@ -34,6 +53,7 @@ const styles = StyleSheet.create({
         width: '50%',
         borderRadius: 50,
         borderWidth: 2,
+        backgroundColor: color.theme,
         borderColor: color.theme,
         justifyContent: 'center',
         alignItems: 'center'

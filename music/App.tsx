@@ -18,6 +18,7 @@ import color from './src/utils/color'
 import { createStackNavigator } from 'react-navigation'
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
 
+import { Cantus } from './src/play/songList'
 const RouterBo = createMaterialBottomTabNavigator(
     {
         Recommend: {
@@ -82,15 +83,25 @@ const RouterBo = createMaterialBottomTabNavigator(
         }
     },
     {
-        initialRouteName: 'MyMusic',
+        initialRouteName: 'Recommend',
         barStyle: { backgroundColor: color.backgroundColor }
     }
 )
 
 const Root = createStackNavigator(
     {
-        App: { screen: RouterBo }
+        App: { screen: RouterBo },
+        SongList: {
+            screen: Cantus,
+            navigationOptions: ({ navigation }) => ({
+                headerStyle: {
+                    backgroundColor: '#eeeee9'
+                },
+                header: null
+            })
+        }
     },
+
     {
         navigationOptions: {
             headerStyle: {
@@ -99,4 +110,4 @@ const Root = createStackNavigator(
         }
     }
 )
-export default Root
+export default Cantus

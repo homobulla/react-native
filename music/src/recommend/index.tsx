@@ -16,7 +16,12 @@ interface props {
 }
 const Route = createMaterialTopTabNavigator(
     {
-        个性推荐: Personality,
+        个性推荐: {
+            screen: Personality,
+            navigationOptions: ({ navigation }) => ({
+                header: null
+            })
+        },
         歌单: SongList,
         主播电台: Station,
         排行榜: Leaderboard

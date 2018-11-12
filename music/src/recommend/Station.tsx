@@ -4,13 +4,13 @@ import color from '../utils/color'
 import axios from 'axios'
 import screen from '../utils/screen'
 import { TJDT } from '../request/API'
+import { IconMenu } from '../component/IconMenu'
+
 class List extends React.PureComponent<props> {
     state = {
         result: []
     }
     _getData(): void {
-        const { props } = this
-
         axios(TJDT)
             .then(res => {
                 this.setState({ result: res.data.result.splice(0, 6) })
@@ -95,6 +95,44 @@ export class Station extends React.Component {
     render() {
         return (
             <ScrollView>
+                <Image
+                    source={require('../asset/img/banner5.png')}
+                    style={{ width: screen.width, height: 140 }}
+                />
+                <View
+                    style={{
+                        alignItems: 'center',
+                        flexDirection: 'row',
+                        justifyContent: 'space-around',
+                        height: screen.width / 4
+                    }}
+                >
+                    <IconMenu
+                        icon="md-radio"
+                        title="电台分类"
+                        pcolor="white"
+                        pbackcolor={color.theme}
+                    />
+                    <IconMenu
+                        icon="md-calendar"
+                        title="电台排行"
+                        pcolor="white"
+                        pbackcolor={color.theme}
+                    />
+                    <IconMenu
+                        icon="md-calendar"
+                        title="DI电音"
+                        pcolor="white"
+                        pbackcolor={color.theme}
+                    />
+
+                    <IconMenu
+                        icon="md-stats"
+                        title="小冰电台"
+                        pcolor="white"
+                        pbackcolor={color.theme}
+                    />
+                </View>
                 <List title="热门电台推荐" />
             </ScrollView>
         )
