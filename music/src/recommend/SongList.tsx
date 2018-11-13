@@ -1,5 +1,12 @@
 import * as React from 'react'
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
+import {
+    View,
+    Text,
+    StyleSheet,
+    Image,
+    ScrollView,
+    TouchableOpacity
+} from 'react-native'
 import color from '../utils/color'
 import Icon from 'react-native-vector-icons/Ionicons'
 import screen from '../utils/screen'
@@ -121,16 +128,27 @@ class List extends React.PureComponent<props> {
                                 }}
                                 key={i.id}
                             >
-                                <Image
-                                    source={{
-                                        uri: i.coverImgUrl
+                                <TouchableOpacity
+                                    onPress={_ => {
+                                        this.props.navigation.navigate(
+                                            'SongList',
+                                            {
+                                                id: i.id
+                                            }
+                                        )
                                     }}
-                                    style={{
-                                        width: '100%',
-                                        height: 150,
-                                        borderRadius: 3
-                                    }}
-                                />
+                                >
+                                    <Image
+                                        source={{
+                                            uri: i.coverImgUrl
+                                        }}
+                                        style={{
+                                            width: '100%',
+                                            height: 150,
+                                            borderRadius: 3
+                                        }}
+                                    />
+                                </TouchableOpacity>
                                 <Text style={list_style.name}>{i.name}</Text>
                             </View>
                         )
@@ -172,7 +190,7 @@ export class SongList extends React.Component {
         return (
             <ScrollView>
                 <SongHeader />
-                <List title="精品歌单" />
+                <List title="精品歌单" navigation={this.props.navigation} />
             </ScrollView>
         )
     }

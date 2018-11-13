@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 import Swiper from 'react-native-swiper'
 import screen from '../utils/screen'
-import { TJMUSIC, TJMV } from '../request/API'
+import { TJMUSIC, TJMV, ZXYY } from '../request/API'
 import axios from 'axios'
 import { IconMenu } from '../component/IconMenu'
 import color from '../utils/color'
@@ -56,7 +56,7 @@ class List extends React.Component<props> {
     }
 
     render() {
-        const { state, props, navigation } = this
+        const { state, props } = this
 
         return (
             <View style={list_style.contain}>
@@ -83,9 +83,19 @@ class List extends React.Component<props> {
                             >
                                 <TouchableOpacity
                                     onPress={_ => {
-                                        this.props.navigation.navigate(
-                                            'SongList'
-                                        )
+                                        props.title === '推荐音乐'
+                                            ? this.props.navigation.navigate(
+                                                  'SongList',
+                                                  {
+                                                      id: i.id
+                                                  }
+                                              )
+                                            : this.props.navigation.navigate(
+                                                  'MvPlay',
+                                                  {
+                                                      id: i.id
+                                                  }
+                                              )
                                     }}
                                 >
                                     <Image
@@ -134,9 +144,6 @@ const list_style = StyleSheet.create({
     }
 })
 export class Personality extends React.Component {
-    static navigationOptions = {
-        header: null
-    }
     render() {
         return (
             <ScrollView>
@@ -158,7 +165,12 @@ export class Personality extends React.Component {
                     apiType={TJMUSIC}
                     navigation={this.props.navigation}
                 />
-                <List title="推荐MV" apiType={TJMV} />
+
+                <List
+                    title="推荐MV"
+                    apiType={TJMV}
+                    navigation={this.props.navigation}
+                />
             </ScrollView>
         )
     }

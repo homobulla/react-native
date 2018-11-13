@@ -18,7 +18,9 @@ import color from './src/utils/color'
 import { createStackNavigator } from 'react-navigation'
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
 
-import { Cantus } from './src/play/songList'
+import { Cantus } from './src/play/Cantus'
+import { MvPlay } from './src/play/MvPlay'
+
 const RouterBo = createMaterialBottomTabNavigator(
     {
         Recommend: {
@@ -99,6 +101,14 @@ const Root = createStackNavigator(
                 },
                 header: null
             })
+        },
+        MvPlay: {
+            screen: MvPlay,
+            navigationOptions: ({ navigation }) => ({
+                headerStyle: {
+                    backgroundColor: color.theme
+                }
+            })
         }
     },
 
@@ -110,4 +120,4 @@ const Root = createStackNavigator(
         }
     }
 )
-export default Cantus
+export default Root
