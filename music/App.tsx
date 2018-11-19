@@ -20,7 +20,7 @@ import { createMaterialBottomTabNavigator } from 'react-navigation-material-bott
 
 import { Cantus } from './src/play/Cantus'
 import { MvPlay } from './src/play/MvPlay'
-
+import { Play } from './src/play/Play'
 const RouterBo = createMaterialBottomTabNavigator(
     {
         Recommend: {
@@ -96,9 +96,6 @@ const Root = createStackNavigator(
         SongList: {
             screen: Cantus,
             navigationOptions: ({ navigation }) => ({
-                headerStyle: {
-                    backgroundColor: '#eeeee9'
-                },
                 header: null
             })
         },
@@ -108,6 +105,12 @@ const Root = createStackNavigator(
                 headerStyle: {
                     backgroundColor: color.theme
                 }
+            })
+        },
+        Play: {
+            screen: Play,
+            navigationOptions: ({ navigation }) => ({
+                header: null
             })
         }
     },

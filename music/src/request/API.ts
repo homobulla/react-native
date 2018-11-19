@@ -20,3 +20,6 @@ export const GDXQ: string = `${BASE}playlist/detail?id=`
 
 // MV详情
 export const MVXQ: string = `${BASE}mv/detail?mvid=`
+
+// 歌曲详情
+export const GQBF: string = `${BASE}song/url?id=`

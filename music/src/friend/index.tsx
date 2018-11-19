@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { View, Text } from 'react-native'
-import { Play } from '../play/Play'
+// import { Play } from '../play/Play'
 export class Friend extends React.PureComponent {
     render() {
         return (
             <View>
-                <Play />
+                <Text>嘿，兄弟！好久不见，你在哪里？</Text>
             </View>
         )
     }

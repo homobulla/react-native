@@ -1,5 +1,12 @@
 import * as React from 'react'
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
+import {
+    View,
+    Text,
+    StyleSheet,
+    Image,
+    ScrollView,
+    TouchableOpacity
+} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import screen from '../utils/screen'
 import color from '../utils/color'
@@ -8,40 +15,51 @@ import { GDXQ } from '../request/API'
 interface props {
     item: Object
     num: number
+    obj: any
+    navigation: any
+    picUrl: string
 }
 class List extends React.PureComponent<props> {
     render() {
         const { props } = this
-
         return (
-            <View style={range.warp}>
-                <Text style={{ width: 30, color: '#999' }}>
-                    {props.num + 1}
-                </Text>
-                <View style={range.right}>
-                    <View style={range.name}>
-                        <Text>{props.item.name}</Text>
-                        <Text
-                            style={{
-                                color: '#999',
-                                fontSize: 11,
-                                paddingTop: 4
-                            }}
-                        >
-                            {props.item.al.name}
-                        </Text>
-                    </View>
+            <TouchableOpacity
+                onPress={_ => {
+                    this.props.navigation.navigate('Play', {
+                        obj: props.obj,
+                        picUrl: props.picUrl
+                    })
+                }}
+            >
+                <View style={range.warp}>
+                    <Text style={{ width: 30, color: '#999' }}>
+                        {props.num + 1}
+                    </Text>
+                    <View style={range.right}>
+                        <View style={range.name}>
+                            <Text>{props.item.name}</Text>
+                            <Text
+                                style={{
+                                    color: '#999',
+                                    fontSize: 11,
+                                    paddingTop: 4
+                                }}
+                            >
+                                {props.item.al.name}
+                            </Text>
+                        </View>
 
-                    <Icon
-                        name="md-more"
-                        style={{
-                            fontSize: 30,
-                            color: '#999',
-                            paddingRight: 20
-                        }}
-                    />
+                        <Icon
+                            name="md-more"
+                            style={{
+                                fontSize: 30,
+                                color: '#999',
+                                paddingRight: 20
+                            }}
+                        />
+                    </View>
                 </View>
-            </View>
+            </TouchableOpacity>
         )
     }
 }
@@ -98,7 +116,7 @@ export class Cantus extends React.PureComponent {
     }
     render() {
         const { state } = this
-
+        let _this = this
         return (
             <ScrollView>
                 <View style={header.warp}>
@@ -192,7 +210,16 @@ export class Cantus extends React.PureComponent {
                     </View>
                 </View>
                 {state.result.tracks.map((v, i) => {
-                    return <List item={v} num={i} key={v.id} />
+                    return (
+                        <List
+                            item={v}
+                            num={i}
+                            key={v.id}
+                            obj={v}
+                            picUrl={v.al}
+                            navigation={_this.props.navigation}
+                        />
+                    )
                 })}
             </ScrollView>
         )
